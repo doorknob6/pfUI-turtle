@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: |cff33ffccpf|cffffffffUI-Turtle
+## Author: Doorknob
+## Notes: Adds skins for the Turtle WoW server custom content to pfUI.
+## Version: 1.0.0
+## Dependencies: pfUI
+
+init\skins.xml

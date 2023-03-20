@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <!-- Turtle -->
+  <Include file="..\skins\turtle\character.lua"/>
+</Ui>

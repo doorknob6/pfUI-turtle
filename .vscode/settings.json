@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.globals": [
+        "CharacterLevelText",
+        "GameTooltip",
+        "pfUI",
+        "TWTitles",
+        "CharacterNameText",
+        "CharacterGuildText",
+        "TWTitlesText",
+        "CharacterResistanceFrame",
+    ]
+}
