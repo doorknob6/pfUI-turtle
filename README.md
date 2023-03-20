@@ -11,3 +11,4 @@ Turtle WoW adds a few UI elements to the base game. This addon aims to make sure
 These UI elements are currently included in this addon:
 
 - Character frame title selection dropdown
+- Inspect talents frame tab

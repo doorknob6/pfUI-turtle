@@ -1,12 +1,27 @@
 {
     "Lua.diagnostics.globals": [
         "CharacterLevelText",
+        "PanelTemplates_TabResize",
+        "PanelTemplates_SetNumTabs",
+        "InspectFrameTab3",
+        "InspectFrame",
+        "InspectFrameTab2",
+        "INSPECTFRAME_SUBFRAMES",
         "GameTooltip",
+        "PanelTemplates_GetSelectedTab",
         "pfUI",
         "TWTitles",
         "CharacterNameText",
         "CharacterGuildText",
         "TWTitlesText",
         "CharacterResistanceFrame",
+        "InspectFrameTalentsTab_OnClick",
+        "InspectTalentsFrame",
+        "TWTalentFrameTab1",
+        "TWTalentFrameScrollFrame",
+        "TWTalentFrameTab2",
+        "TWTalentFrameTab3",
+        "TWTalentFrameScrollFrameScrollBar",
+        "MAX_NUM_TALENTS"
     ]
 }
