@@ -40,7 +40,6 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     if (not _G[joinAsButtonName]) then return end
     StripTextures(_G[joinAsButtonName])
     SkinButton(_G[joinAsButtonName])
-    message("updated" .. name)
     dungeon.isBrowseUpdated = true
   end
 
