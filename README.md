@@ -12,3 +12,4 @@ These UI elements are currently included in this addon:
 
 - Character frame title selection dropdown
 - Inspect talents frame tab
+- The Looking for Turtles dungeon finder tool
