@@ -1,6 +1,11 @@
 pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
-  local rawborder, border = GetBorderSize()
-  local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
+  -- skin is loaded after pfUI is booted - so check if it is disabled ourselves
+  if (pfUI_config["disabled"] and
+      pfUI_config["disabled"]["skin_Looking for turtles"]  == "1") then
+    return
+  end
+
+  local _, border = GetBorderSize()
 
   -- updates a main dungeon list item if it hasn't been updated yet
   local updateMainDungeonListItem = function (name, dungeon)

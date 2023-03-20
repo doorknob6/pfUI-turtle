@@ -1,4 +1,10 @@
 pfUI:RegisterSkin("Character Turtle", "vanilla", function()
+  -- skin is loaded after pfUI is booted - so check if it is disabled ourselves
+  if (pfUI_config["disabled"] and
+      pfUI_config["disabled"]["skin_Character Turtle"]  == "1") then
+    return
+  end
+
   if TWTitles then
     CharacterLevelText:SetPoint("TOP", CharacterNameText, "BOTTOM", 0, -2)
     SkinDropDown(TWTitles)

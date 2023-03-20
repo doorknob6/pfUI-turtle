@@ -1,4 +1,9 @@
 pfUI:RegisterSkin("Inspect Turtle", "vanilla", function()
+  -- skin is loaded after pfUI is booted - so check if it is disabled ourselves
+  if (pfUI_config["disabled"] and
+      pfUI_config["disabled"]["skin_Inspect Turtle"]  == "1") then
+    return
+  end
   local _, border = GetBorderSize()
 
   HookAddonOrVariable("InspectTalentsFrame", function()
