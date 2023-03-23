@@ -16,8 +16,9 @@ These UI elements are currently included in this addon:
 <img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">
 </p>
 
-
 ## Installation
+
+Download and install [pfUI](https://github.com/shagu/pfUI).
 
 Download the [latest version](https://github.com/doorknob6/pfUI-turtle/archive/refs/heads/master.zip).
 
