@@ -12,6 +12,11 @@ These UI elements are currently included in this addon:
 - Inspect talents frame tab
 - The Looking for Turtles dungeon finder tool
 
+<p align="center">
+<img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">
+</p>
+
+
 ## Installation
 
 Download the [latest version](https://github.com/doorknob6/pfUI-turtle/archive/refs/heads/master.zip).
