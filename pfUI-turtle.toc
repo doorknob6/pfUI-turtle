@@ -6,4 +6,5 @@
 ## Dependencies: pfUI
 
 init\env.xml
+init\modules.xml
 init\skins.xml
