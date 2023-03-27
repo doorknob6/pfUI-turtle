@@ -60,6 +60,8 @@
         "LFTBrowseBrowseText",
         "LFTBrowseDungeonsText",
         "BrowseDungeonListScrollFrame",
-        "BrowseDungeonListScrollFrameScrollBar"
+        "BrowseDungeonListScrollFrameScrollBar",
+        "RANK",
+        "libdebuff"
     ]
 }
