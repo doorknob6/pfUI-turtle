@@ -1,4 +1,8 @@
 pfUI:RegisterModule("turtle-customcasts", "vanilla", function()
+    if (pfUI_config["disabled"] and
+      pfUI_config["disabled"]["turtle-customcasts"]  == "1") then
+      return
+    end
     -- integration is already supplied -> return
     if pfUI.api.libcast.customcast["trueshot"] then return end
 
