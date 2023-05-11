@@ -6,6 +6,7 @@ pfUI:RegisterModule("turtle-customdedebuffs", "vanilla", function()
   end
 
   if (pfUI.api.libdebuff.customTurtle) then return end
+  pfUI.api.HookScript = HookScript
   pfUI.api.HookScript(pfUI.api.libdebuff, "OnEvent", function()
     ---@diagnostic disable-next-line: undefined-global
     if event == "CHAT_MSG_SPELL_SELF_DAMAGE" then
@@ -36,6 +37,6 @@ pfUI:RegisterModule("turtle-customdedebuffs", "vanilla", function()
 
 
 
-  pfUI.api.libdeff.customTurtle = true
+  pfUI.api.libdebuff.customTurtle = true
 end)
 
