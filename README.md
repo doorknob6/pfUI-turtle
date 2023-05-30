@@ -1,6 +1,6 @@
 # pfUI-Turtle
 
-An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins for the [Turtle WoW server](https://turtle-wow.org/#/home) custom UI elements and implements custom behaviour for a few classes' skills. If any skill is missing, please open an [issue](https://github.com/doorknob6/pfUI-turtle/issues/new/choose) to alert me to it. The latest version of pfUI is required.
+An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins for the [Turtle WoW server](https://turtle-wow.org/#/home) custom UI elements, implements custom behaviour for a few classes' skills and updates item sell data. If any skill is missing, please open an [issue](https://github.com/doorknob6/pfUI-turtle/issues/new/choose) to alert me to it. The latest version of pfUI is required.
 
 # Features
 
