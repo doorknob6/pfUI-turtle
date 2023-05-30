@@ -1,4 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
   <Include file="..\modules\casts.lua"/>
   <Include file="..\modules\debuffs.lua"/>
+  <Include file="..\modules\selldata.lua"/>
 </Ui>
