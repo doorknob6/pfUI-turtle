@@ -2,10 +2,13 @@
 
 An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins for the [Turtle WoW server](https://turtle-wow.org/#/home) custom UI elements and implements custom behaviour for a few classes' skills. If any skill is missing, please open an [issue](https://github.com/doorknob6/pfUI-turtle/issues/new/choose) to alert me to it. The latest version of pfUI is required.
 
-## Features
+# Features
 
-Turtle WoW adds a couple of UI elements to the base game. This addon aims to make sure these new elements' design is in line with the rest of the UI.
+### Item sell data
 
+The addon contains updated item sell data for Turtle WoW patch 1.16.5 (2023-05-30).
+
+### UI elements
 These UI elements are currently included in this addon:
 
 - Character frame title selection dropdown
@@ -16,6 +19,7 @@ These UI elements are currently included in this addon:
 <img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">
 </p>
 
+### Custom skills
 These custom class skills are included in this addon:
 
 - Hunter [Trueshot](https://database.turtle-wow.org/?spell=3035#see-also-ability) now has a castbar
