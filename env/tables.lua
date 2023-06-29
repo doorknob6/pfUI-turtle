@@ -33,5 +33,7 @@ TURTLE_DUNGEON_CODES = {
     ['Karazhan Crypt'] = { code = 'kc', isMainUpdated = false, isBrowseUpdated=false },
     ['Caverns of Time: Black Morass'] = { code = 'cotbm', isMainUpdated = false, isBrowseUpdated=false },
     ['Stormwind Vault'] = { code = 'swv', isMainUpdated = false, isBrowseUpdated=false },
-    ['Hateforge Quarry'] = { code = 'hfq', isMainUpdated = false, isBrowseUpdated=false }
+    ['Hateforge Quarry'] = { code = 'hfq', isMainUpdated = false, isBrowseUpdated=false },
+	['Dire Maul Tribute'] = { code = 'dmt', isMainUpdated = false, isBrowseUpdated=false },
+	['Gilneas City'] = { code = 'gilneas', isMainUpdated = false, isBrowseUpdated=false },
 }
