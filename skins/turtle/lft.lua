@@ -43,7 +43,7 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     if (not _G[frameName]) then return end
     local joinAsButtonName = frameName .. "_JoinAs"
     if (not _G[joinAsButtonName]) then return end
-    StripTextures(_G[joinAsButtonName])
+    StripTextures(_G[joinAsButtonName], true)
     SkinButton(_G[joinAsButtonName])
     dungeon.isBrowseUpdated = true
   end
@@ -79,16 +79,18 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
 
     SkinScrollbar(DungeonListScrollFrameScrollBar)
 
-    StripTextures(findGroupButton)
+    StripTextures(findGroupButton, true)
     SkinButton(findGroupButton)
-    StripTextures(findMoreButton)
+    StripTextures(findMoreButton, true)
     SkinButton(findMoreButton)
-    StripTextures(leaveQueueButton)
+    StripTextures(leaveQueueButton, true)
     SkinButton(leaveQueueButton)
 
     -- replace the dungeons tab button
-    LFTDungeonsButtonReplacement = CreateFrame("Button", "LFTDungeonsButtonReplacement",
-      LFTlft, "UIPanelButtonTemplate")
+    LFTDungeonsButtonReplacement = CreateFrame("Button",
+      "LFTDungeonsButtonReplacement",
+      LFTlft,
+      "UIPanelButtonTemplate")
     SkinButton(LFTDungeonsButtonReplacement)
     LFTDungeonsButtonReplacement:SetWidth(LFTDungeonsButton:GetWidth())
     LFTDungeonsButtonReplacement:SetHeight(LFTDungeonsButton:GetHeight())
@@ -97,8 +99,11 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     LFTDungeonsButtonReplacement:SetText(LFTMainDungeonsText:GetText())
     LFTMainDungeonsText:Hide()
     LFTBrowseDungeonsText:Hide()
-    LFTDungeonsButtonReplacement:SetPoint("TOPLEFT", LFTMain.backdrop, "BOTTOMLEFT",
-      0, -(border + (border == 1 and 1 or 2)))
+    LFTDungeonsButtonReplacement:SetPoint("TOPLEFT",
+      LFTMain.backdrop,
+      "BOTTOMLEFT",
+      0,
+      -(border + (border == 1 and 1 or 2)))
 
     LFTDungeonsButtonReplacement:SetScript("OnShow", function()
       if (LFTMain:IsVisible()) then
@@ -129,8 +134,10 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     SkinScrollbar(BrowseDungeonListScrollFrameScrollBar)
 
     -- replace the browse tab button
-    LFTBrowseButtonReplacement = CreateFrame("Button", "LFTBrowseButtonReplacement",
-      LFTlft, "UIPanelButtonTemplate")
+    LFTBrowseButtonReplacement = CreateFrame("Button",
+      "LFTBrowseButtonReplacement",
+      LFTlft,
+      "UIPanelButtonTemplate")
     SkinButton(LFTBrowseButtonReplacement)
     LFTBrowseButtonReplacement:SetWidth(LFTBrowseButton:GetWidth())
     LFTBrowseButtonReplacement:SetHeight(LFTBrowseButton:GetHeight())
@@ -139,8 +146,11 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     LFTBrowseButtonReplacement:SetText(LFTMainBrowseText:GetText())
     LFTMainBrowseText:Hide()
     LFTBrowseBrowseText:Hide()
-    LFTBrowseButtonReplacement:SetPoint("TOPLEFT", LFTDungeonsButtonReplacement,
-      "TOPRIGHT", (border + (border == 1 and 1 or 2)), 0)
+    LFTBrowseButtonReplacement:SetPoint("TOPLEFT",
+      LFTDungeonsButtonReplacement,
+      "TOPRIGHT",
+      (border + (border == 1 and 1 or 2)),
+      0)
 
     LFTBrowseButtonReplacement:SetScript("OnShow", function()
       if (LFTBrowse:IsVisible()) then
