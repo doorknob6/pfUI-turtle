@@ -4,9 +4,6 @@ pfUI:RegisterSkin("Everlook Broadcasting Turtle", "vanilla", function()
         pfUI_config["disabled"]["skin_Everlook Broadcasting Turtle"]  == "1") then
       return
     end
-
-    local _, border = GetBorderSize()
-
     local function SetFrameFont(frame, layer, text, font)
         local fontString = GetNoNameObject(frame, "FontString", layer, text)
         if (fontString) then
