@@ -14,13 +14,14 @@ These UI elements are currently included in this addon:
 - Character frame title selection dropdown
 - Inspect talents frame tab
 - The Looking for Turtles dungeon finder tool
+- The Everlook Broadcasting Co. frame
 
 <p align="center">
 <img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">
 </p>
 
 ### Custom skills
-These custom class skills are included in this addon:
+These custom class skills were included in this addon, they are included in the main [pfUI](https://github.com/shagu/pfUI) addon now.
 
 - Hunter [Trueshot](https://database.turtle-wow.org/?spell=3035#see-also-ability) now has a castbar
 - Paladin [Holy Strike](https://database.turtle-wow.org/?spell=679) refreshes seals on the target
