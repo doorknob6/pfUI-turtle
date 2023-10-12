@@ -15,6 +15,8 @@ These UI elements are currently included in this addon:
 - Inspect talents frame tab
 - The Looking for Turtles dungeon finder tool
 - The Everlook Broadcasting Co. frame
+- Guild bank frame
+    - I haven't had the heart to ask any guilds to give me guild bank editing rights, so some guild bank skins haven't been live-tested. Feedback is very welcome.
 
 <p align="center">
 <img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">

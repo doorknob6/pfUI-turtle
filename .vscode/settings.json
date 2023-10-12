@@ -66,18 +66,11 @@
         "GameTooltipHeaderText",
         "DEFAULT_CHAT_FRAME",
         "GameTooltipText",
-        "EBCMinimapDropdown",
-        "EBCMinimapDropdownTitle",
-        "EBC_TITLE",
-        "EBCMinimapDropdownCheckButton",
-        "EBCMinimapDropdownRadio",
-        "EBC_STATION1",
-        "EBCMinimapDropdownCheckButton2",
-        "EBCMinimapDropdownRadio2",
-        "EBC_STATION2",
-        "EBCMinimapDropdownSlider",
-        "SkinSlider",
-        "EBCMinimapDropdownVolText",
-        "EBCMinimapDropdownMuteButton"
+        "GuildBankFrame",
+        "SetDesaturation",
+        "CharacterFrame",
+        "STATICPOPUP_NUMDIALOGS",
+        "GameFontNormal",
+        "StackSplitFrame"
     ]
 }
