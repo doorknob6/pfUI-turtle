@@ -2,4 +2,5 @@
   <Include file="..\skins\turtle\everlook_broadcasting_co.lua"/>
   <Include file="..\skins\turtle\inspect.lua"/>
   <Include file="..\skins\turtle\lft.lua"/>
+  <Include file="..\skins\turtle\static_popup.lua"/>
 </Ui>
