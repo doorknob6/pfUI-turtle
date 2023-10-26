@@ -6,7 +6,7 @@ An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins f
 
 ### Item sell data
 
-The addon contains updated item sell data for Turtle WoW patch 1.16.5 (2023-05-30).
+The addon contains updated item sell data for Turtle WoW patch **1.17.0 (2023-10-26)**.
 
 ### UI elements
 These UI elements are currently included in this addon:
@@ -23,7 +23,7 @@ These UI elements are currently included in this addon:
 </p>
 
 ### Custom skills
-These custom class skills were included in this addon, they are included in the main [pfUI](https://github.com/shagu/pfUI) addon now.
+These custom class skills used to be included in this addon, they are included in the main [pfUI](https://github.com/shagu/pfUI) addon now.
 
 - Hunter [Trueshot](https://database.turtle-wow.org/?spell=3035#see-also-ability) now has a castbar
 - Paladin [Holy Strike](https://database.turtle-wow.org/?spell=679) refreshes seals on the target
