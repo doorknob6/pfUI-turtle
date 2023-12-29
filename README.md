@@ -6,7 +6,7 @@ An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins f
 
 ### Item sell data
 
-The addon contains updated item sell data for Turtle WoW patch **1.17.0 (2023-10-26)**.
+The addon contains updated item sell data for Turtle WoW patch **1.17.1 (2023-12-29)**.
 
 ### UI elements
 These UI elements are currently included in this addon:
