@@ -65,9 +65,7 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     LFTFrame:SetHitRectInsets(14,26,10,72)
 
     SkinCloseButton(LFTFrameCloseButton, LFTFrame.backdrop, -6, -6)
-	
-	-- LFTFrameInstancesList:SetPoint("TOPLEFT", LFTBrowse, "TOPLEFT", 25, -45)
-    -- LFTFrameInstancesList:SetHeight(370)
+
     SkinScrollbar(LFTFrameInstancesListScrollBar)
 
     SkinCheckbox(RoleTank)
@@ -83,7 +81,7 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
     -- StripTextures(leaveQueueButton, true)
     -- SkinButton(leaveQueueButton)
 	
-	-- post-hook the `BrowseDungeonListFrame_Update` function to update the dungeon list
+    -- post-hook the `BrowseDungeonListFrame_Update` function to update the dungeon list
     -- items in the LFTBrowse Frame
     ---@diagnostic disable-next-line: param-type-mismatch
     hooksecurefunc("LFTFrameInstancesList_Update", updateBrowseDungeonListItems, true)
