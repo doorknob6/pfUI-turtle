@@ -56,120 +56,35 @@ pfUI:RegisterSkin("Looking for turtles", "vanilla", function ()
   end
 
   HookAddonOrVariable("LFT", function()
-    StripTextures(LFTMain, nil, "BACKGROUND")
-    StripTextures(LFTMain, nil, "ARTWORK")
-    CreateBackdrop(LFTMain, nil, nil, .75)
-    CreateBackdropShadow(LFTMain)
-    LFTMain.backdrop:SetPoint("TOPLEFT", 14, -10)
-    LFTMain.backdrop:SetPoint("BOTTOMRIGHT", -26, 72)
-    LFTMain:SetHitRectInsets(14,26,10,72)
+    StripTextures(LFTFrame, nil, "BACKGROUND")
+    StripTextures(LFTFrame, nil, "ARTWORK")
+    CreateBackdrop(LFTFrame, nil, nil, .75)
+    CreateBackdropShadow(LFTFrame)
+    LFTFrame.backdrop:SetPoint("TOPLEFT", 14, -10)
+    LFTFrame.backdrop:SetPoint("BOTTOMRIGHT", -26, 72)
+    LFTFrame:SetHitRectInsets(14,26,10,72)
 
-    SkinCloseButton(LFTMainCloseButton, LFTMain.backdrop, -6, -6)
+    SkinCloseButton(LFTFrameCloseButton, LFTFrame.backdrop, -6, -6)
+
+    SkinScrollbar(LFTFrameInstancesListScrollBar)
 
     SkinCheckbox(RoleTank)
     SkinCheckbox(RoleHealer)
     SkinCheckbox(RoleDamage)
 
-    SkinDropDown(LFTTypeSelect)
+    SkinDropDown(LFTFrameDropDown)
 
-    -- post-hook the `DungeonListFrame_Update` function to update the dungeon list items
-    -- in the LFTMain Frame
-    ---@diagnostic disable-next-line: param-type-mismatch
-    hooksecurefunc("DungeonListFrame_Update", updateMainDungeonListItems, true)
-
-    SkinScrollbar(DungeonListScrollFrameScrollBar)
-
-    StripTextures(findGroupButton, true)
-    SkinButton(findGroupButton)
-    StripTextures(findMoreButton, true)
-    SkinButton(findMoreButton)
-    StripTextures(leaveQueueButton, true)
-    SkinButton(leaveQueueButton)
-
-    -- replace the dungeons tab button
-    LFTDungeonsButtonReplacement = CreateFrame("Button",
-      "LFTDungeonsButtonReplacement",
-      LFTlft,
-      "UIPanelButtonTemplate")
-    SkinButton(LFTDungeonsButtonReplacement)
-    LFTDungeonsButtonReplacement:SetWidth(LFTDungeonsButton:GetWidth())
-    LFTDungeonsButtonReplacement:SetHeight(LFTDungeonsButton:GetHeight())
-    LFTDungeonsButton:Disable()
-    LFTDungeonsButton:Hide()
-    LFTDungeonsButtonReplacement:SetText(LFTMainDungeonsText:GetText())
-    LFTMainDungeonsText:Hide()
-    LFTBrowseDungeonsText:Hide()
-    LFTDungeonsButtonReplacement:SetPoint("TOPLEFT",
-      LFTMain.backdrop,
-      "BOTTOMLEFT",
-      0,
-      -(border + (border == 1 and 1 or 2)))
-
-    LFTDungeonsButtonReplacement:SetScript("OnShow", function()
-      if (LFTMain:IsVisible()) then
-        ---@diagnostic disable-next-line: undefined-global
-        this:Disable()
-      end
-    end)
-
-    LFTDungeonsButtonReplacement:SetScript("OnClick", function()
-      lft_switch_tab(1)
-      ---@diagnostic disable-next-line: undefined-global
-      this:Disable()
-      LFTBrowseButtonReplacement:Enable()
-    end)
-
-    StripTextures(LFTBrowse, nil, "BACKGROUND")
-    StripTextures(LFTBrowse, nil, "ARTWORK")
-    CreateBackdrop(LFTBrowse, nil, nil, .75)
-    CreateBackdropShadow(LFTBrowse)
-    LFTBrowse.backdrop:SetPoint("TOPLEFT", 14, -10)
-    LFTBrowse.backdrop:SetPoint("BOTTOMRIGHT", -26, 72)
-    LFTBrowse:SetHitRectInsets(14,26,10,72)
-
-    SkinCloseButton(LFTBrowseCloseButton, LFTBrowse.backdrop, -6, -6)
-
-    BrowseDungeonListScrollFrame:SetPoint("TOPLEFT", LFTBrowse, "TOPLEFT", 25, -45)
-    BrowseDungeonListScrollFrame:SetHeight(370)
-    SkinScrollbar(BrowseDungeonListScrollFrameScrollBar)
-
-    -- replace the browse tab button
-    LFTBrowseButtonReplacement = CreateFrame("Button",
-      "LFTBrowseButtonReplacement",
-      LFTlft,
-      "UIPanelButtonTemplate")
-    SkinButton(LFTBrowseButtonReplacement)
-    LFTBrowseButtonReplacement:SetWidth(LFTBrowseButton:GetWidth())
-    LFTBrowseButtonReplacement:SetHeight(LFTBrowseButton:GetHeight())
-    LFTBrowseButton:Disable()
-    LFTBrowseButton:Hide()
-    LFTBrowseButtonReplacement:SetText(LFTMainBrowseText:GetText())
-    LFTMainBrowseText:Hide()
-    LFTBrowseBrowseText:Hide()
-    LFTBrowseButtonReplacement:SetPoint("TOPLEFT",
-      LFTDungeonsButtonReplacement,
-      "TOPRIGHT",
-      (border + (border == 1 and 1 or 2)),
-      0)
-
-    LFTBrowseButtonReplacement:SetScript("OnShow", function()
-      if (LFTBrowse:IsVisible()) then
-        ---@diagnostic disable-next-line: undefined-global
-        this:Enable()
-      end
-    end)
-
-    LFTBrowseButtonReplacement:SetScript("OnClick", function()
-      lft_switch_tab(2)
-      ---@diagnostic disable-next-line: undefined-global
-      this:Disable()
-      LFTDungeonsButtonReplacement:Enable()
-    end)
-
+    StripTextures(LFTFrameMainButton, true)
+    SkinButton(LFTFrameMainButton)
+    -- StripTextures(findMoreButton, true)
+    -- SkinButton(findMoreButton)
+    -- StripTextures(leaveQueueButton, true)
+    -- SkinButton(leaveQueueButton)
+	
     -- post-hook the `BrowseDungeonListFrame_Update` function to update the dungeon list
     -- items in the LFTBrowse Frame
     ---@diagnostic disable-next-line: param-type-mismatch
-    hooksecurefunc("BrowseDungeonListFrame_Update", updateBrowseDungeonListItems, true)
+    hooksecurefunc("LFTFrameInstancesList_Update", updateBrowseDungeonListItems, true)
 
   end)
 
