@@ -4,6 +4,7 @@ moonkin_scan:RegisterEvent("UNIT_NAME_UPDATE")
 moonkin_scan:RegisterEvent("PLAYER_TALENT_UPDATE")
 moonkin_scan:RegisterEvent("CHARACTER_POINTS_CHANGED")
 moonkin_scan:SetScript("OnEvent", function()
+local _, class = UnitClass("player")
 if class == "DRUID" then
   for i = table.getn(pfUI.autoshift.shapeshifts), 1, -1 do
 	if pfUI.autoshift.shapeshifts[i] == "spell_nature_forceofnature" then
