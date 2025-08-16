@@ -8,7 +8,7 @@ local _, class = UnitClass("player")
 if class == "DRUID" then
   for i = table.getn(pfUI.autoshift.shapeshifts), 1, -1 do
 	if pfUI.autoshift.shapeshifts[i] == "spell_nature_forceofnature" then
-	  pfUI.autoshift.shapeshifts.remove(list, i)
+	  table.remove(pfUI.autoshift.shapeshifts, i)
 	end
   end
   local _,_,_,_,moonkin = GetTalentInfo(1,15)
