@@ -1,4 +1,4 @@
--- TurtleWoW Group Finder (new) — STEP 1 (Lua 5.0 safe)
+-- TurtleWoW Group Finder 1.18
 pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
   if pfUI_config["disabled"] and pfUI_config["disabled"]["skin_Turtle Group Finder"] == "1" then
     return
