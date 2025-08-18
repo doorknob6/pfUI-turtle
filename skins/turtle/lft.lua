@@ -145,7 +145,20 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     end)
   end
 
-
+  -- search edit box
+  local searchBox = _G["LFTFrameSearch"]
+  if searchBox then
+    StripTextures(searchBox, nil, "BACKGROUND")
+    local searchIcon = _G["LFTFrameSearchIcon"]
+    if searchIcon then
+      searchIcon:ClearAllPoints()
+      searchIcon:SetPoint("LEFT", searchBox, "LEFT", 3, -1)
+    end
+    searchBox:SetScript("OnEscapePressed", function() this:ClearFocus() end)
+    searchBox:SetTextInsets(18, 20, 5, 5)
+    searchBox:SetFontObject(GameFontNormal)
+    CreateBackdrop(searchBox, nil, true)
+  end
 
 
   gf.pfui_turtleGF_skinned = true
