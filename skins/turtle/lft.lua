@@ -3,7 +3,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
   if pfUI_config["disabled"] and pfUI_config["disabled"]["skin_Turtle Group Finder"] == "1" then
     return
   end
-  
+
     local gf = LFTFrame
 
     -- main frame
@@ -34,13 +34,13 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 		SkinButton(LFTFrameMainButton)
 		LFTFrameMainButton:SetWidth(100)
 	end
-	
+
 	if LFTFrameRefreshButton then
 		StripTextures(LFTFrameRefreshButton, true)
 		SkinButton(LFTFrameRefreshButton)
 		LFTFrameRefreshButton:SetWidth(100)
 	end
-	
+
 	if LFTFrameNewGroupButton then
 		StripTextures(LFTFrameNewGroupButton, true)
 		SkinButton(LFTFrameNewGroupButton)
@@ -48,7 +48,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 		LFTFrameNewGroupButton:ClearAllPoints()
 		LFTFrameNewGroupButton:SetPoint("LEFT", LFTFrameRefreshButton, "RIGHT", 15, 0)
 	end
-	
+
 	if LFTFrameSignUpButton then
 		StripTextures(LFTFrameSignUpButton, true)
 		SkinButton(LFTFrameSignUpButton)
@@ -56,39 +56,98 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 		LFTFrameSignUpButton:ClearAllPoints()
 		LFTFrameSignUpButton:SetPoint("LEFT", LFTFrameNewGroupButton, "RIGHT", 15, 0)
 	end
+
+  -- checkboxes
+  local checkBoxSize = 18
+  if LFTFrameRoleTankCheckButton then
+    SkinCheckbox(LFTFrameRoleTankCheckButton, checkBoxSize)
+    CreateBackdrop(LFTFrameRoleTankCheckButton, nil, true)
+  end
+  if LFTFrameRoleHealerCheckButton then
+    SkinCheckbox(LFTFrameRoleHealerCheckButton, checkBoxSize)
+    CreateBackdrop(LFTFrameRoleHealerCheckButton, nil, true)
+  end
+  if LFTFrameRoleDamageCheckButton then
+    SkinCheckbox(LFTFrameRoleDamageCheckButton, checkBoxSize)
+    CreateBackdrop(LFTFrameRoleDamageCheckButton, nil, true)
+  end
+
+  -- close button
+  local lFTFrameCloseButton = GetNoNameObject(
+    LFTFrame,
+    "Button",
+    nil,
+    "UI-Panel-MinimizeButton-Up"
+  )
+  if lFTFrameCloseButton then
+    SkinCloseButton(lFTFrameCloseButton, gf.backdrop, -6, -6)
+  end
+
 	-- tabs
-    local queueTab, browseTab
-    if gf.GetName then
-      queueTab = _G[gf:GetName() .. "Tab1"]
-      browseTab = _G[gf:GetName() .. "Tab2"]
-    end
-    if _G.QueueTab then queueTab = _G.QueueTab end
-    if _G.BrowseTab then browseTab = _G.BrowseTab end
+  local queueTab, browseTab
+  if gf.GetName then
+    queueTab = _G[gf:GetName() .. "Tab1"]
+    browseTab = _G[gf:GetName() .. "Tab2"]
+  end
+  if _G.QueueTab then queueTab = _G.QueueTab end
+  if _G.BrowseTab then browseTab = _G.BrowseTab end
 
-    if queueTab then
-      SkinTab(queueTab, 1)
-      queueTab:ClearAllPoints()
-      queueTab:SetPoint("TOPLEFT", gf, "BOTTOMLEFT", 15, 70)
-    end
-    if browseTab then
-      SkinTab(browseTab, 1)
-      browseTab:ClearAllPoints()
-      browseTab:SetPoint("LEFT", queueTab, "RIGHT", 10, 0)
-    end
+  if queueTab then
+    SkinTab(queueTab, 1)
+    queueTab:ClearAllPoints()
+    queueTab:SetPoint("TOPLEFT", gf, "BOTTOMLEFT", 15, 70)
+  end
+  if browseTab then
+    SkinTab(browseTab, 1)
+    browseTab:ClearAllPoints()
+    browseTab:SetPoint("LEFT", queueTab, "RIGHT", 10, 0)
+  end
 
-    -- scrollbars
-    local c1, c2, c3, c4, c5, c6, c7, c8 = gf:GetChildren()
-    local kids = { c1, c2, c3, c4, c5, c6, c7, c8 }
-    local i = 1
-    while kids[i] do
-      local child = kids[i]
-      if child and child.GetObjectType and child:GetObjectType() == "ScrollFrame" and child.GetName then
-        local bar = _G[child:GetName() .. "ScrollBar"]
-        if bar then SkinScrollbar(bar) end
+  -- scrollbars
+  local c1, c2, c3, c4, c5, c6, c7, c8 = gf:GetChildren()
+  local kids = { c1, c2, c3, c4, c5, c6, c7, c8 }
+  local i = 1
+  while kids[i] do
+    local child = kids[i]
+    if child and child.GetObjectType and child:GetObjectType() == "ScrollFrame" and child.GetName then
+      local bar = _G[child:GetName() .. "ScrollBar"]
+      if bar then SkinScrollbar(bar) end
+    end
+    i = i + 1
+  end
+
+
+  -- instance entries
+  if LFT_UpdateInstances then
+    hooksecurefunc("LFT_UpdateInstances", function()
+      if LFT_Instances then
+        local index = 0
+        for _ in pairs(LFT_Instances) do
+          index = index + 1
+          local instanceEntryFrameName = "LFTFrameInstancesListEntry" .. index
+          local instanceListEntry = _G[instanceEntryFrameName]
+          if instanceListEntry then
+            local checkButtonName = instanceEntryFrameName .. "CheckButton"
+            local checkButton = _G[checkButtonName]
+            if checkButton then
+              checkButton:SetNormalTexture("")
+              checkButton:SetPushedTexture("")
+              checkButton:SetHighlightTexture("")
+              checkButton:SetWidth(18)
+              checkButton:SetHeight(18)
+              CreateBackdrop(checkButton, nil, true)
+              checkButton:ClearAllPoints()
+              checkButton:SetPoint("TOPLEFT", instanceListEntry, "TOPLEFT", 0, -1)
+            end
+          end
+        end
       end
-      i = i + 1
-    end
+    end)
+  end
 
-    gf.pfui_turtleGF_skinned = true
-	
+
+
+
+  gf.pfui_turtleGF_skinned = true
+
 end)
