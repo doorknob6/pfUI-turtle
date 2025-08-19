@@ -92,15 +92,23 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
   if _G.QueueTab then queueTab = _G.QueueTab end
   if _G.BrowseTab then browseTab = _G.BrowseTab end
 
+  local rawborder, border = GetBorderSize()
+  local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
   if queueTab then
     SkinTab(queueTab, 1)
     queueTab:ClearAllPoints()
-    queueTab:SetPoint("TOPLEFT", gf, "BOTTOMLEFT", 15, 70)
+    queueTab:SetPoint(
+      "TOPLEFT",
+      gf.backdrop,
+      "BOTTOMLEFT",
+      bpad,
+      -(border + (border == 1 and 1 or 2))
+    )
   end
   if browseTab then
     SkinTab(browseTab, 1)
     browseTab:ClearAllPoints()
-    browseTab:SetPoint("LEFT", queueTab, "RIGHT", 10, 0)
+    browseTab:SetPoint("LEFT", queueTab, "RIGHT", border*2 + 1, 0)
   end
 
   -- scrollbars
