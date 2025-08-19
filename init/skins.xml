@@ -1,7 +1,9 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Include file="..\skins\turtle\arena.lua"/>
   <Include file="..\skins\turtle\character.lua"/>
   <Include file="..\skins\turtle\everlook_broadcasting_co.lua"/>
   <Include file="..\skins\turtle\guild_bank.lua"/>
+  <Include file="..\skins\turtle\honor.lua"/>
   <Include file="..\skins\turtle\inspect.lua"/>
   <Include file="..\skins\turtle\lft.lua"/>
   <Include file="..\skins\turtle\static_popup.lua"/>

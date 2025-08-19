@@ -237,7 +237,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 
 
     if queueTab then
-      SkinTab(queueTab, 1)
+      pfUI.api.SkinTab(queueTab, 1)
       queueTab:ClearAllPoints()
       queueTab:SetPoint(
         "TOPLEFT",
@@ -248,7 +248,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       )
     end
     if browseTab then
-      SkinTab(browseTab, 1)
+      pfUI.api.SkinTab(browseTab, 1)
       browseTab:ClearAllPoints()
       browseTab:SetPoint("LEFT", queueTab, "RIGHT", border*2 + 1, 0)
     end
