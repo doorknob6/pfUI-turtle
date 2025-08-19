@@ -155,7 +155,10 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       searchIcon:SetPoint("LEFT", searchBox, "LEFT", 3, -1)
     end
     searchBox:SetScript("OnEscapePressed", function() this:ClearFocus() end)
-    searchBox:SetTextInsets(18, 20, 5, 5)
+    searchBox:ClearAllPoints()
+    searchBox:SetPoint("TOPLEFT", LFTFrame, "TOPLEFT", 32, -126)
+    searchBox:SetHeight(25)
+    searchBox:SetTextInsets(18, 20, 4, 4)
     searchBox:SetFontObject(GameFontNormal)
     CreateBackdrop(searchBox, nil, true)
   end
