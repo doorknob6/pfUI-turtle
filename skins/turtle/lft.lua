@@ -112,7 +112,6 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     LFTFrameMainButton:ClearAllPoints()
     LFTFrameMainButton:SetPoint("BOTTOM", gf.backdrop, "BOTTOM", 0, 5)
 	end
-
   if LFTFrameNewGroupButton then
 		StripTextures(LFTFrameNewGroupButton, true)
 		SkinButton(LFTFrameNewGroupButton)
@@ -147,19 +146,72 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     )
 	end
 
-  -- checkboxes
+  -- role buttons and checkboxes
   local checkBoxSize = 18
-  if LFTFrameRoleTankCheckButton then
-    SkinCheckbox(LFTFrameRoleTankCheckButton, checkBoxSize)
-    CreateBackdrop(LFTFrameRoleTankCheckButton, nil, true)
+
+  local function SkinRoleButton(roleName, textureName)
+    local roleButton
+    if gf.GetName then roleButton = _G[gf:GetName() .. roleName] end
+    if not roleButton then return end
+
+    roleButton:SetHeight(36)
+    roleButton:SetWidth(36)
+
+    local roleCheckButton
+    if roleButton.GetName then roleCheckButton = _G[roleButton:GetName() .. "CheckButton"] end
+    if roleCheckButton then
+      SkinCheckbox(roleCheckButton, checkBoxSize)
+      CreateBackdrop(roleCheckButton, nil, true)
+      roleCheckButton:ClearAllPoints()
+      roleCheckButton:SetPoint("BOTTOMLEFT", roleButton, "BOTTOMLEFT", -8, -8)
+    end
+
+    local roleIcon
+    if roleButton.GetName then roleIcon = _G[roleButton:GetName() .. "Icon"] end
+
+    if roleIcon then
+      local texturePath = "Interface\\AddOns\\pfUI-turtle\\img\\" .. textureName
+      roleIcon:SetTexture(texturePath)
+    end
+
+    pfUI.api.CreateBackdrop(roleButton, nil, true)
+    roleButton:SetHighlightTexture("")
+
+    pfUI.api.SetHighlight(roleButton, 1, 1, 1)
+
+    pfUI.api.SetAllPointsOffset(roleIcon, roleButton, 1)
+
+    local roleBackground
+    if roleButton.GetName then roleBackground = _G[roleButton:GetName() .. "Background"] end
+
+    if roleBackground then
+      roleBackground:ClearAllPoints()
+      roleBackground:SetPoint("TOPLEFT", roleButton, "TOPLEFT", -24,  24)
+    end
   end
-  if LFTFrameRoleHealerCheckButton then
-    SkinCheckbox(LFTFrameRoleHealerCheckButton, checkBoxSize)
-    CreateBackdrop(LFTFrameRoleHealerCheckButton, nil, true)
+
+  SkinRoleButton("RoleTank", "tank2")
+  local roleTankButton
+  if gf.GetName then roleTankButton = _G[gf:GetName() .. "RoleTank"] end
+  if roleTankButton then
+    roleTankButton:ClearAllPoints()
+    roleTankButton:SetPoint("TOPLEFT", gf, "TOPLEFT", 83,  -61)
   end
-  if LFTFrameRoleDamageCheckButton then
-    SkinCheckbox(LFTFrameRoleDamageCheckButton, checkBoxSize)
-    CreateBackdrop(LFTFrameRoleDamageCheckButton, nil, true)
+
+  SkinRoleButton("RoleHealer", "healer2")
+  local roleHealerButton
+  if gf.GetName then roleHealerButton = _G[gf:GetName() .. "RoleHealer"] end
+  if roleHealerButton and roleTankButton then
+    roleHealerButton:ClearAllPoints()
+    roleHealerButton:SetPoint("LEFT", roleTankButton, "RIGHT", 62,  0)
+  end
+
+  SkinRoleButton("RoleDamage", "damage2")
+  local roleDamageButton
+  if gf.GetName then roleDamageButton = _G[gf:GetName() .. "RoleDamage"] end
+  if roleDamageButton and roleHealerButton then
+    roleDamageButton:ClearAllPoints()
+    roleDamageButton:SetPoint("LEFT", roleHealerButton, "RIGHT", 62,  0)
   end
 
   -- close button
