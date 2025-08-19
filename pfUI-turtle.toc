@@ -5,6 +5,5 @@
 ## Version: 1.0.0
 ## Dependencies: pfUI
 
-init\env.xml
 init\modules.xml
 init\skins.xml
