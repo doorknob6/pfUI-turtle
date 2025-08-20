@@ -75,4 +75,64 @@ pfUI:RegisterSkin("Arena Turtle", "vanilla", function ()
   skinArenaTeamFrame(1)
   skinArenaTeamFrame(2)
   skinArenaTeamFrame(3)
+
+  -- skin details frame
+  local detailsFrameName = arenaFrameName .. "DetailsFrame"
+  local detailsFrame = _G[detailsFrameName]
+  if detailsFrame then
+    pfUI.api.StripTextures(detailsFrame)
+    pfUI.api.CreateBackdrop(detailsFrame, nil, nil, 0.75)
+    pfUI.api.CreateBackdropShadow(detailsFrame)
+
+    detailsFrame:ClearAllPoints()
+    detailsFrame:SetPoint(
+      "TOPLEFT",
+      CharacterFrame.backdrop,
+      "TOPRIGHT",
+      border + (border == 1 and 1 or 2),
+      -28
+    )
+
+    local detailsCloseButton = _G[detailsFrameName .. "CloseButton"]
+    if detailsCloseButton then
+      pfUI.api.SkinCloseButton(detailsCloseButton, detailsFrame, -6, -6)
+    end
+
+    local detailsButton = _G[detailsFrameName .. "Button"]
+    if detailsButton then
+      pfUI.api.SkinButton(detailsButton)
+    end
+
+    local function skinMemberFrame(no)
+      local memberFrameName = detailsFrameName .. "Member" .. no
+      local kickButtonName = memberFrameName .. "KickButton"
+      local kickButton = _G[kickButtonName]
+      if kickButton then
+        pfUI.api.SkinButton(kickButton, 1, 0.25, 0.25)
+
+        kickButton:SetWidth(15)
+        kickButton:SetHeight(15)
+
+        kickButton.texture = kickButton:CreateTexture(
+          "pfUITurtleDisbandArenaTeam"
+        )
+        local texturePath = "Interface\\AddOns\\pfUI-turtle\\img\\cancel"
+        kickButton.texture:SetTexture(texturePath)
+        kickButton.texture:ClearAllPoints()
+        kickButton.texture:SetAllPoints(kickButton)
+        kickButton.texture:SetVertexColor(1,.25,.25,1)
+
+        -- local memberName = _G[memberFrameName .. "Name"]
+        -- if memberName then
+        --   kickButton:ClearAllPoints()
+        --   kickButton:SetPoint("LEFT", memberName, "LEFT", 142, 0)
+        -- end
+
+      end
+    end
+
+    for i = 1, 5 do
+      skinMemberFrame(i)
+    end
+  end
 end)
