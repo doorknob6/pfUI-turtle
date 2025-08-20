@@ -6,7 +6,7 @@ pfUI:RegisterSkin("Honor Turtle", "vanilla", function ()
   local hf = _G["HonorFrame"]
   if not hf then return end
 
-  local rawborder, border = GetBorderSize()
+  local rawborder, border = pfUI.api.GetBorderSize()
 
   -- skin tab buttons
   local hfTabButton1 = _G[hf:GetName() .. "Tab1"]

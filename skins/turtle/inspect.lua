@@ -4,15 +4,15 @@ pfUI:RegisterSkin("Inspect Turtle", "vanilla", function()
       pfUI_config["disabled"]["skin_Inspect Turtle"]  == "1") then
     return
   end
-  local _, border = GetBorderSize()
+  local _, border = pfUI.api.GetBorderSize()
 
-  HookAddonOrVariable("InspectTalentsFrame", function()
+  pfUI.api.HookAddonOrVariable("InspectTalentsFrame", function()
     -- prevent Turtle WoW's interface script from creating the tab button when the
     -- inspect frame is shown for the first time by creating it ourselves
     if (not InspectFrameTab3) then
       CreateFrame('Button', 'InspectFrameTab3', InspectFrame, 'CharacterFrameTabButtonTemplate')
       InspectFrameTab3:SetPoint("LEFT", InspectFrameTab2, "RIGHT", border * 2 + 1, 0)
-      SkinTab(InspectFrameTab3)
+      pfUI.api.SkinTab(InspectFrameTab3)
 
       InspectFrameTab3:SetID(3)
       InspectFrameTab3:SetText('Talents')
@@ -39,27 +39,27 @@ pfUI:RegisterSkin("Inspect Turtle", "vanilla", function()
       end
     end
 
-    StripTextures(InspectTalentsFrame)
+    pfUI.api.StripTextures(InspectTalentsFrame)
 
     if (TWTalentFrameTab1) then
-      SkinTab(TWTalentFrameTab1)
+      pfUI.api.SkinTab(TWTalentFrameTab1)
       if (TWTalentFrameScrollFrame) then
         TWTalentFrameTab1:SetPoint("TOPLEFT", TWTalentFrameScrollFrame, "TOPLEFT", 2,
           TWTalentFrameTab1:GetHeight() + 4)
       end
     end
-    if (TWTalentFrameTab2) then SkinTab(TWTalentFrameTab2) end
-    if (TWTalentFrameTab3) then SkinTab(TWTalentFrameTab3) end
-    if (TWTalentFrameScrollFrame) then StripTextures(TWTalentFrameScrollFrame) end
+    if (TWTalentFrameTab2) then pfUI.api.SkinTab(TWTalentFrameTab2) end
+    if (TWTalentFrameTab3) then pfUI.api.SkinTab(TWTalentFrameTab3) end
+    if (TWTalentFrameScrollFrame) then pfUI.api.StripTextures(TWTalentFrameScrollFrame) end
     if (TWTalentFrameScrollFrameScrollBar) then
-      SkinScrollbar(TWTalentFrameScrollFrameScrollBar)
+       pfUI.api.SkinScrollbar(TWTalentFrameScrollFrameScrollBar)
     end
 
     for i = 1, MAX_NUM_TALENTS do
       local talent = _G["TWTalentFrameTalent" .. i]
       if talent then
-        StripTextures(talent)
-        SkinButton(talent, nil, nil, nil, _G["TWTalentFrameTalent" .. i .. "IconTexture"])
+        pfUI.api.StripTextures(talent)
+        pfUI.api.SkinButton(talent, nil, nil, nil, _G["TWTalentFrameTalent" .. i .. "IconTexture"])
 
         _G["TWTalentFrameTalent" .. i .. "Rank"]:SetFont(pfUI.font_default, C.global.font_size, "OUTLINE")
       end

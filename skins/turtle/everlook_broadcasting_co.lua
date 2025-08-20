@@ -5,7 +5,7 @@ pfUI:RegisterSkin("Everlook Broadcasting Turtle", "vanilla", function()
       return
     end
     local function SetFrameFont(frame, layer, text, font)
-        local fontString = GetNoNameObject(frame, "FontString", layer, text)
+        local fontString = pfUI.api.GetNoNameObject(frame, "FontString", layer, text)
         if (fontString) then
             fontString:SetFont(font:GetFont())
             return true
@@ -13,21 +13,21 @@ pfUI:RegisterSkin("Everlook Broadcasting Turtle", "vanilla", function()
         return false
     end
 
-    HookAddonOrVariable("EBCMinimapDropdown", function()
-        StripTextures(EBCMinimapDropdown)
-        CreateBackdrop(EBCMinimapDropdown, nil, nil, .75)
+    pfUI.api.HookAddonOrVariable("EBCMinimapDropdown", function()
+        pfUI.api.StripTextures(EBCMinimapDropdown)
+        pfUI.api.CreateBackdrop(EBCMinimapDropdown, nil, nil, .75)
 
         if (EBCMinimapDropdownTitle) then
             SetFrameFont(EBCMinimapDropdownTitle, nil, EBC_TITLE, GameTooltipHeaderText)
         end
         if (EBCMinimapDropdownCheckButton) then
-            SkinCheckbox(EBCMinimapDropdownCheckButton)
+            pfUI.api.SkinCheckbox(EBCMinimapDropdownCheckButton)
         end
         if (EBCMinimapDropdownRadio) then
             SetFrameFont(EBCMinimapDropdownRadio, nil, EBC_STATION1, GameTooltipText)
         end
         if (EBCMinimapDropdownCheckButton2) then
-            SkinCheckbox(EBCMinimapDropdownCheckButton2)
+            pfUI.api.SkinCheckbox(EBCMinimapDropdownCheckButton2)
         end
         if (EBCMinimapDropdownRadio2) then
             SetFrameFont(EBCMinimapDropdownRadio2, nil, EBC_STATION2, GameTooltipText)

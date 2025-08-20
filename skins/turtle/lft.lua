@@ -6,15 +6,15 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 
   local gf = LFTFrame
 
-  local rawborder, border = GetBorderSize()
-  local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
+  local rawborder, border = pfUI.api.GetBorderSize()
+  local bpad = rawborder > 1 and border - pfUI.api.GetPerfectPixel() or pfUI.api.GetPerfectPixel()
 
   -- main frame
   do
-    StripTextures(gf, nil, "BACKGROUND")
-    StripTextures(gf, nil, "ARTWORK")
-    CreateBackdrop(gf, nil, nil, .75)
-    CreateBackdropShadow(gf)
+    pfUI.api.StripTextures(gf, nil, "BACKGROUND")
+    pfUI.api.StripTextures(gf, nil, "ARTWORK")
+    pfUI.api.CreateBackdrop(gf, nil, nil, .75)
+    pfUI.api.CreateBackdropShadow(gf)
 
     if gf.backdrop then
       gf.backdrop:SetPoint("TOPLEFT", 14, -10)
@@ -29,7 +29,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     if gf.GetName then dropdown = _G[gf:GetName() .. "DropDown"] end
     if not dropdown and _G.LFTFrameDropDown then dropdown = _G.LFTFrameDropDown end
     if dropdown then
-      SkinDropDown(dropdown)
+      pfUI.api.SkinDropDown(dropdown)
       dropdown:ClearAllPoints()
       dropdown:SetPoint("TOPLEFT", LFTFrame, "TOPLEFT", 150, -120)
     end
@@ -37,7 +37,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     -- search edit box
     local searchBox = _G["LFTFrameSearch"]
     if searchBox then
-      StripTextures(searchBox, nil, "BACKGROUND")
+      pfUI.api.StripTextures(searchBox, nil, "BACKGROUND")
       local searchIcon = _G["LFTFrameSearchIcon"]
       if searchBox.GetName then searchIcon = _G[searchBox:GetName() .. "SearchIcon"] end
       if not searchIcon and _G.LFTFrameSearchIcon then searchIcon = _G.LFTFrameSearchIcon end
@@ -52,7 +52,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       searchBox:SetWidth(138)
       searchBox:SetTextInsets(18, 20, 4, 4)
       searchBox:SetFontObject(GameFontNormal)
-      CreateBackdrop(searchBox, nil, true)
+      pfUI.api.CreateBackdrop(searchBox, nil, true)
     end
 
     -- instances list scroll frame and scroll bar
@@ -73,7 +73,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 
 
       local bar = _G[scrollFrame:GetName() .. "ScrollBar"]
-      if bar then SkinScrollbar(bar) end
+      if bar then  pfUI.api.SkinScrollbar(bar) end
     end
 
     -- instance entries
@@ -94,7 +94,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
                 checkButton:SetHighlightTexture("")
                 checkButton:SetWidth(18)
                 checkButton:SetHeight(18)
-                CreateBackdrop(checkButton, nil, true)
+                pfUI.api.CreateBackdrop(checkButton, nil, true)
                 checkButton:ClearAllPoints()
                 checkButton:SetPoint("TOPLEFT", instanceListEntry, "TOPLEFT", 0, -1)
               end
@@ -107,22 +107,22 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     -- buttons
     local buttonWidth = 105
     if LFTFrameMainButton then
-      StripTextures(LFTFrameMainButton, true)
-      SkinButton(LFTFrameMainButton)
+      pfUI.api.StripTextures(LFTFrameMainButton, true)
+      pfUI.api.SkinButton(LFTFrameMainButton)
       LFTFrameMainButton:SetWidth(buttonWidth)
       LFTFrameMainButton:ClearAllPoints()
       LFTFrameMainButton:SetPoint("BOTTOM", gf.backdrop, "BOTTOM", 0, 5)
     end
     if LFTFrameNewGroupButton then
-      StripTextures(LFTFrameNewGroupButton, true)
-      SkinButton(LFTFrameNewGroupButton)
+      pfUI.api.StripTextures(LFTFrameNewGroupButton, true)
+      pfUI.api.SkinButton(LFTFrameNewGroupButton)
       LFTFrameNewGroupButton:SetWidth(buttonWidth)
       LFTFrameNewGroupButton:ClearAllPoints()
       LFTFrameNewGroupButton:SetPoint("BOTTOM", gf.backdrop, "BOTTOM", 0, 5)
     end
     if LFTFrameRefreshButton then
-      StripTextures(LFTFrameRefreshButton, true)
-      SkinButton(LFTFrameRefreshButton)
+      pfUI.api.StripTextures(LFTFrameRefreshButton, true)
+      pfUI.api.SkinButton(LFTFrameRefreshButton)
       LFTFrameRefreshButton:SetWidth(buttonWidth)
       LFTFrameRefreshButton:ClearAllPoints()
       LFTFrameRefreshButton:SetPoint(
@@ -134,8 +134,8 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       )
     end
     if LFTFrameSignUpButton then
-      StripTextures(LFTFrameSignUpButton, true)
-      SkinButton(LFTFrameSignUpButton)
+      pfUI.api.StripTextures(LFTFrameSignUpButton, true)
+      pfUI.api.SkinButton(LFTFrameSignUpButton)
       LFTFrameSignUpButton:SetWidth(buttonWidth)
       LFTFrameSignUpButton:ClearAllPoints()
       LFTFrameSignUpButton:SetPoint(
@@ -161,8 +161,8 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       local roleCheckButton
       if roleButton.GetName then roleCheckButton = _G[roleButton:GetName() .. "CheckButton"] end
       if roleCheckButton then
-        SkinCheckbox(roleCheckButton, checkBoxSize)
-        CreateBackdrop(roleCheckButton, nil, true)
+        pfUI.api.SkinCheckbox(roleCheckButton, checkBoxSize)
+        pfUI.api.CreateBackdrop(roleCheckButton, nil, true)
         roleCheckButton:ClearAllPoints()
         roleCheckButton:SetPoint("BOTTOMLEFT", roleButton, "BOTTOMLEFT", -8, -8)
       end
@@ -216,14 +216,14 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     end
 
     -- close button
-    local lFTFrameCloseButton = GetNoNameObject(
+    local lFTFrameCloseButton = pfUI.api.GetNoNameObject(
       LFTFrame,
       "Button",
       nil,
       "UI-Panel-MinimizeButton-Up"
     )
     if lFTFrameCloseButton then
-      SkinCloseButton(lFTFrameCloseButton, gf.backdrop, -6, -6)
+      pfUI.api.SkinCloseButton(lFTFrameCloseButton, gf.backdrop, -6, -6)
     end
 
     -- tabs
@@ -258,9 +258,9 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
   -- new group frame
   if LFTNewGroupFrame then
     local ngf = LFTNewGroupFrame
-    StripTextures(ngf, nil, "BACKGROUND")
-    CreateBackdrop(ngf, nil, nil, .75)
-    CreateBackdropShadow(ngf)
+    pfUI.api.StripTextures(ngf, nil, "BACKGROUND")
+    pfUI.api.CreateBackdrop(ngf, nil, nil, .75)
+    pfUI.api.CreateBackdropShadow(ngf)
 
     if ngf.backdrop then
       ngf.backdrop:SetPoint("TOPLEFT", 14, -10)
@@ -283,13 +283,13 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
         ngTitleBox:ClearAllPoints()
         ngTitleBox:SetPoint("TOPLEFT", ngTitleLabel, "BOTTOMLEFT", -2, -4)
       end
-      CreateBackdrop(ngTitleBox, nil, true)
+      pfUI.api.CreateBackdrop(ngTitleBox, nil, true)
     end
 
     -- title box background
     local ngTitleBoxBg = _G["LFTNewGroupTitleBackground"]
     if ngTitleBoxBg then
-      StripTextures(ngTitleBoxBg)
+      pfUI.api.StripTextures(ngTitleBoxBg)
       if ngTitleLabel then
         ngTitleBoxBg:ClearAllPoints()
         ngTitleBoxBg:SetPoint("TOPLEFT", ngTitleLabel, "BOTTOMLEFT", -2, -4)
@@ -300,8 +300,8 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     local ngDescriptionBoxBg = _G["LFTNewGroupDescriptionBackground"]
     local ngDescriptionLabel = _G["LFTNewGroupLabelDescription"]
     if ngDescriptionBoxBg then
-      StripTextures(ngDescriptionBoxBg)
-      CreateBackdrop(ngDescriptionBoxBg)
+      pfUI.api.StripTextures(ngDescriptionBoxBg)
+      pfUI.api.CreateBackdrop(ngDescriptionBoxBg)
       if ngDescriptionLabel then
         ngDescriptionBoxBg:ClearAllPoints()
         ngDescriptionBoxBg:SetPoint("TOPLEFT", ngDescriptionLabel, "BOTTOMLEFT", -2, -4)
@@ -312,7 +312,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     local ngDescriptionBox = _G["LFTNewGroupDescription"]
     if ngDescriptionBox then
       local descriptionBar = _G[ngDescriptionBox:GetName() .. "ScrollBar"]
-      if descriptionBar then SkinScrollbar(descriptionBar) end
+      if descriptionBar then pfUI.api.SkinScrollbar(descriptionBar) end
 
       if ngDescriptionBoxBg and ngDescriptionBoxBg.backdrop then
         ngDescriptionBox:ClearAllPoints()
@@ -328,8 +328,8 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     -- roles checkbutton
     local ngUseRolesButton = _G["LFTNewGroupUseRolesButton"]
     if ngUseRolesButton then
-      SkinCheckbox(ngUseRolesButton, checkBoxSize)
-      CreateBackdrop(ngUseRolesButton, nil, true)
+      pfUI.api.SkinCheckbox(ngUseRolesButton, checkBoxSize)
+      pfUI.api.CreateBackdrop(ngUseRolesButton, nil, true)
       local ngUseRolesText = _G[ngUseRolesButton:GetName().."Text"]
       if ngUseRolesText then
         ngUseRolesText:ClearAllPoints()
@@ -340,8 +340,8 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     local function SkinRoleEditBox(editBoxName, textureName)
       local ngRoleBox = _G[editBoxName]
       if ngRoleBox then
-        StripTextures(ngRoleBox, nil, "BACKGROUND")
-        CreateBackdrop(ngRoleBox, nil, true)
+        pfUI.api.StripTextures(ngRoleBox, nil, "BACKGROUND")
+        pfUI.api.CreateBackdrop(ngRoleBox, nil, true)
         local ngRoleBoxIcon = _G[ngRoleBox:GetName() .. "Icon"]
         local texturePath = "Interface\\AddOns\\pfUI-turtle\\img\\" .. textureName
         if ngRoleBoxIcon then
@@ -393,12 +393,12 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
 
     -- buttons
     if LFTNewGroupOkButton then
-      SkinButton(LFTNewGroupOkButton)
+      pfUI.api.SkinButton(LFTNewGroupOkButton)
       LFTNewGroupOkButton:ClearAllPoints()
       LFTNewGroupOkButton:SetPoint("BOTTOMRIGHT", LFTNewGroupFrame, -106, 14)
     end
     if LFTNewGroupCancelButton then
-      SkinButton(LFTNewGroupCancelButton)
+      pfUI.api.SkinButton(LFTNewGroupCancelButton)
     end
   end
 
@@ -408,7 +408,7 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
     ngdf:ClearAllPoints()
     ngdf:SetPoint("TOPLEFT", gf, "TOPRIGHT", -25, -10)
 
-    StripTextures(ngdf, nil, "BACKGROUND")
+    pfUI.api.StripTextures(ngdf, nil, "BACKGROUND")
 
     pfUI.api.CreateBackdrop(ngdf, nil, nil, .75)
     pfUI.api.CreateBackdropShadow(ngdf)
@@ -563,15 +563,15 @@ pfUI:RegisterSkin("Turtle Group Finder", "vanilla", function()
       damageBackdropFrame:SetPoint("LEFT", healerBackdropFrame, "RIGHT", border*3 + 1, 0)
 
       -- skin scrollbars
-      local function skinScrollBar(name)
+      local function localSkinScrollbar(name)
         local ngdSignedPlayersScrollBar = _G[ngdSignedPlayers:GetName() .. name .. "ScrollBar"]
         if ngdSignedPlayersScrollBar then
           pfUI.api.SkinScrollbar(ngdSignedPlayersScrollBar)
         end
       end
-      skinScrollBar("Scroll1")
-      skinScrollBar("Scroll2")
-      skinScrollBar("Scroll3")
+       localSkinScrollbar("Scroll1")
+       localSkinScrollbar("Scroll2")
+       localSkinScrollbar("Scroll3")
 
       -- skin signed player buttons
       for i = 1, 3 do

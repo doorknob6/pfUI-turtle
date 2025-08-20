@@ -14,22 +14,22 @@ pfUI:RegisterSkin("Static popups Turtle", "vanilla", function()
         end
 
         local dialog = _G["StaticPopup2" .. i]
-        CreateBackdrop(dialog, nil, true, .75)
-        CreateBackdropShadow(dialog)
+        pfUI.api.CreateBackdrop(dialog, nil, true, .75)
+        pfUI.api.CreateBackdropShadow(dialog)
 
-        SkinCloseButton(_G[dialog:GetName() .. "CloseButton"], dialog, -6, -6)
+        pfUI.api.SkinCloseButton(_G[dialog:GetName() .. "CloseButton"], dialog, -6, -6)
 
-        SkinButton(_G[dialog:GetName() .. "Button1"])
-        SkinButton(_G[dialog:GetName() .. "Button2"])
+        pfUI.api.SkinButton(_G[dialog:GetName() .. "Button1"])
+        pfUI.api.SkinButton(_G[dialog:GetName() .. "Button2"])
 
         local editbox = _G[dialog:GetName() .. "EditBox"]
         editbox:DisableDrawLayer("BACKGROUND")
-        CreateBackdrop(editbox)
+        pfUI.api.CreateBackdrop(editbox)
         editbox:SetHeight(18)
 
         local wide_editbox = _G[dialog:GetName() .. "WideEditBox"]
         wide_editbox:DisableDrawLayer("BACKGROUND")
-        CreateBackdrop(wide_editbox)
+        pfUI.api.CreateBackdrop(wide_editbox)
         wide_editbox:SetHeight(18)
         wide_editbox:ClearAllPoints()
         wide_editbox:SetPoint("BOTTOM", 0, 45)

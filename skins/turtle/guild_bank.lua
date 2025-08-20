@@ -4,8 +4,8 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
             pfUI_config["disabled"]["skin_Guild Bank Turtle"] == "1") then
         return
     end
-    local rawborder, border = GetBorderSize()
-    local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
+    local rawborder, border = pfUI.api.GetBorderSize()
+    local bpad = rawborder > 1 and border - pfUI.api.GetPerfectPixel() or pfUI.api.GetPerfectPixel()
 
     -- no global values available, so we copy them locally
     local MAX_TABS = 5
@@ -42,14 +42,15 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
     end
 
     -- update item slot borders on tab frame change
-    HookAddonOrVariable("GuildBankFrameTab_OnClick", function()
+    pfUI.api.HookAddonOrVariable("GuildBankFrameTab_OnClick", function()
         hooksecurefunc("GuildBankFrameTab_OnClick", function()
-                UpdateSlotsBorderColor()
+            UpdateSlotsBorderColor()
             end,
-            true)
+            true
+        )
     end)
 
-    HookAddonOrVariable("GuildBankFrame", function()
+    pfUI.api.HookAddonOrVariable("GuildBankFrame", function()
         local GuildBank = CreateFrame("Frame")
         GuildBank.prefix = "TW_GUILDBANK"
 
@@ -65,44 +66,44 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                             string.find(message, "GPartialWithdraw:", 1, true) or
                             string.find(message, "GDestroy:", 1, true) or
                             string.find(message, "GPartialDestroy:", 1, true)) then
-                        QueueFunction(UpdateSlotsBorderColor)
+                        pfUI.api.QueueFunction(UpdateSlotsBorderColor)
                     end
                 end
             end
         end)
 
-        StripTextures(GuildBankFrame)
-        CreateBackdrop(GuildBankFrame, nil, nil, .75)
+        pfUI.api.StripTextures(GuildBankFrame)
+        pfUI.api.CreateBackdrop(GuildBankFrame, nil, nil, .75)
 
         if (GuildBankFrameCloseButton) then
-            SkinCloseButton(GuildBankFrameCloseButton, GuildBankFrame.backdrop, -6, -6)
+            pfUI.api.SkinCloseButton(GuildBankFrameCloseButton, GuildBankFrame.backdrop, -6, -6)
         end
 
         -- item slot reskin
         if (GuildBankFrameSlots) then
-            StripTextures(GuildBankFrameSlots)
+            pfUI.api.StripTextures(GuildBankFrameSlots)
 
             for i = 1, MAX_SLOTS do
                 if (_G["GuildBankFrameItem" .. i]) then
-                    StripTextures(_G["GuildBankFrameItem" .. i], false)
-                    CreateBackdrop(_G["GuildBankFrameItem" .. i])
-                    SetAllPointsOffset(_G["GuildBankFrameItem" .. i].backdrop,
+                    pfUI.api.StripTextures(_G["GuildBankFrameItem" .. i], false)
+                    pfUI.api.CreateBackdrop(_G["GuildBankFrameItem" .. i])
+                    pfUI.api.SetAllPointsOffset(_G["GuildBankFrameItem" .. i].backdrop,
                         _G["GuildBankFrameItem" .. i],
                         0)
-                    HandleIcon(_G["GuildBankFrameItem" .. i].backdrop,
+                    pfUI.api.HandleIcon(_G["GuildBankFrameItem" .. i].backdrop,
                         _G["GuildBankFrameItem" .. i .. "IconTexture"])
                 end
             end
         end
 
         if (GuildBankFrameDepositButton) then
-            StripTextures(GuildBankFrameDepositButton, true)
-            SkinButton(GuildBankFrameDepositButton)
+            pfUI.api.StripTextures(GuildBankFrameDepositButton, true)
+            pfUI.api.SkinButton(GuildBankFrameDepositButton)
         end
 
         if (GuildBankFrameFrameWithdrawButton) then
-            StripTextures(GuildBankFrameFrameWithdrawButton, true)
-            SkinButton(GuildBankFrameFrameWithdrawButton)
+            pfUI.api.StripTextures(GuildBankFrameFrameWithdrawButton, true)
+            pfUI.api.SkinButton(GuildBankFrameFrameWithdrawButton)
             GuildBankFrameFrameWithdrawButton:SetPoint("RIGHT",
                 GuildBankFrameDepositButton,
                 "LEFT",
@@ -113,11 +114,11 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
         for i = 1, MAX_TABS do
             local tab = _G["GuildBankFrameTab" .. i]
             if (tab) then
-                StripTextures(tab, false)
-                CreateBackdrop(tab)
-                SetAllPointsOffset(tab.backdrop, tab, 0)
-                HandleIcon(tab.backdrop, tab:GetNormalTexture())
-                HandleIcon(tab.backdrop, tab:GetPushedTexture())
+                pfUI.api.StripTextures(tab, false)
+                pfUI.api.CreateBackdrop(tab)
+                pfUI.api.SetAllPointsOffset(tab.backdrop, tab, 0)
+                pfUI.api.HandleIcon(tab.backdrop, tab:GetNormalTexture())
+                pfUI.api.HandleIcon(tab.backdrop, tab:GetPushedTexture())
 
                 if (i == 1) then
                     tab:SetPoint("TOPLEFT",
@@ -139,7 +140,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
         end
 
         if (GuildBankFrameBottomTab1) then
-            SkinTab(GuildBankFrameBottomTab1)
+            pfUI.api.SkinTab(GuildBankFrameBottomTab1)
             GuildBankFrameBottomTab1:SetPoint("TOPLEFT",
                 GuildBankFrame.backdrop,
                 "BOTTOMLEFT",
@@ -147,7 +148,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                 -(border + (border == 1 and 1 or 2)))
         end
         if (GuildBankFrameBottomTab2) then
-            SkinTab(GuildBankFrameBottomTab2)
+            pfUI.api.SkinTab(GuildBankFrameBottomTab2)
             GuildBankFrameBottomTab2:SetPoint("LEFT",
                 GuildBankFrameBottomTab1,
                 "RIGHT",
@@ -155,7 +156,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                 0)
         end
         if (GuildBankFrameBottomTab3) then
-            SkinTab(GuildBankFrameBottomTab3)
+            pfUI.api.SkinTab(GuildBankFrameBottomTab3)
             GuildBankFrameBottomTab3:SetPoint("LEFT",
                 GuildBankFrameBottomTab2,
                 "RIGHT",
@@ -164,8 +165,8 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
         end
 
         if (GuildBankFrameTabSettings) then
-            StripTextures(GuildBankFrameTabSettings)
-            CreateBackdrop(GuildBankFrameTabSettings, nil, nil, .75)
+            pfUI.api.StripTextures(GuildBankFrameTabSettings)
+            pfUI.api.CreateBackdrop(GuildBankFrameTabSettings, nil, nil, .75)
             GuildBankFrameTabSettings:ClearAllPoints()
             GuildBankFrameTabSettings:SetPoint("TOPLEFT",
                 GuildBankFrame.backdrop,
@@ -173,14 +174,14 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                 (border + (border == 1 and 1 or 2)),
                 -bpad)
             if (GuildBankFrameTabSettingsTabNameEditBox) then
-                StripTextures(GuildBankFrameTabSettingsTabNameEditBox)
+                pfUI.api.StripTextures(GuildBankFrameTabSettingsTabNameEditBox)
                 GuildBankFrameTabSettingsTabNameEditBox:SetTextInsets(5, 5, 5, 5)
                 GuildBankFrameTabSettingsTabNameEditBox:SetFontObject(GameFontNormal)
-                CreateBackdrop(GuildBankFrameTabSettingsTabNameEditBox, nil, true)
+                pfUI.api.CreateBackdrop(GuildBankFrameTabSettingsTabNameEditBox, nil, true)
                 GuildBankFrameTabSettingsTabNameEditBox:SetWidth(211)
             end
             if (GuildBankFrameTabSettingsAccessDropdown) then
-                SkinDropDown(GuildBankFrameTabSettingsAccessDropdown)
+                pfUI.api.SkinDropDown(GuildBankFrameTabSettingsAccessDropdown)
                 GuildBankFrameTabSettingsAccessDropdown:SetWidth(125)
                 if (GuildBankFrameTabSettingsAccessDropdown.button) then
                     GuildBankFrameTabSettingsAccessDropdown.button:SetScript("OnEnter",
@@ -188,7 +189,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                 end
             end
             if (GuildBankFrameTabSettingsWithdrawalsDropdown) then
-                SkinDropDown(GuildBankFrameTabSettingsWithdrawalsDropdown)
+                pfUI.api.SkinDropDown(GuildBankFrameTabSettingsWithdrawalsDropdown)
                 GuildBankFrameTabSettingsWithdrawalsDropdown:SetWidth(125)
                 if (GuildBankFrameTabSettingsWithdrawalsDropdown.button) then
                     GuildBankFrameTabSettingsWithdrawalsDropdown.button:SetScript("OnEnter",
@@ -197,9 +198,9 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
             end
 
             if (GuildBankFrameTabSettingsScrollFrame) then
-                StripTextures(GuildBankFrameTabSettingsScrollFrame)
-                CreateBackdrop(GuildBankFrameTabSettingsScrollFrame, nil, true)
-                SkinScrollbar(GuildBankFrameTabSettingsScrollFrameScrollBar)
+                pfUI.api.StripTextures(GuildBankFrameTabSettingsScrollFrame)
+                pfUI.api.CreateBackdrop(GuildBankFrameTabSettingsScrollFrame, nil, true)
+                 pfUI.api.SkinScrollbar(GuildBankFrameTabSettingsScrollFrameScrollBar)
                 GuildBankFrameTabSettingsScrollFrame:ClearAllPoints()
                 GuildBankFrameTabSettingsScrollFrame:SetPoint("TOPLEFT",
                     GuildBankFrameTabSettings,
@@ -211,12 +212,12 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
             end
 
             if (GuildBankFrameTabSettingsCloseButton) then
-                SkinCloseButton(GuildBankFrameTabSettingsCloseButton)
+                pfUI.api.SkinCloseButton(GuildBankFrameTabSettingsCloseButton)
             end
 
             if (GuildBankFrameTabSettingsSaveButton) then
-                StripTextures(GuildBankFrameTabSettingsSaveButton, true)
-                SkinButton(GuildBankFrameTabSettingsSaveButton)
+                pfUI.api.StripTextures(GuildBankFrameTabSettingsSaveButton, true)
+                pfUI.api.SkinButton(GuildBankFrameTabSettingsSaveButton)
                 GuildBankFrameTabSettingsSaveButton:SetWidth(105 - border)
                 GuildBankFrameTabSettingsSaveButton:ClearAllPoints()
                 GuildBankFrameTabSettingsSaveButton:SetPoint("BOTTOMLEFT",
@@ -226,8 +227,8 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                     10)
             end
             if (GuildBankFrameTabSettingsCancelButton) then
-                StripTextures(GuildBankFrameTabSettingsCancelButton, true)
-                SkinButton(GuildBankFrameTabSettingsCancelButton)
+                pfUI.api.StripTextures(GuildBankFrameTabSettingsCancelButton, true)
+                pfUI.api.SkinButton(GuildBankFrameTabSettingsCancelButton)
 
                 GuildBankFrameTabSettingsCancelButton:SetWidth(105 - border)
                 GuildBankFrameTabSettingsCancelButton:ClearAllPoints()
@@ -240,11 +241,11 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
         end
 
         if (GuildBankFrameStackSplitFrame) then
-            StripTextures(GuildBankFrameStackSplitFrame)
+            pfUI.api.StripTextures(GuildBankFrameStackSplitFrame)
             GuildBankFrameStackSplitFrame:SetHeight(76)
             GuildBankFrameStackSplitFrame:SetWidth(162)
-            CreateBackdrop(GuildBankFrameStackSplitFrame, nil, nil, .75)
-            CreateBackdropShadow(GuildBankFrameStackSplitFrame)
+            pfUI.api.CreateBackdrop(GuildBankFrameStackSplitFrame, nil, nil, .75)
+            pfUI.api.CreateBackdropShadow(GuildBankFrameStackSplitFrame)
             if (GuildBankFrameStackSplitFrameLeftButton) then
                 GuildBankFrameStackSplitFrameLeftButton:ClearAllPoints()
                 GuildBankFrameStackSplitFrameLeftButton:SetPoint("BOTTOMRIGHT",
@@ -270,7 +271,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                     10)
             end
             if (GuildBankFrameStackSplitFrameOkayButton) then
-                SkinButton(GuildBankFrameStackSplitFrameOkayButton)
+                pfUI.api.SkinButton(GuildBankFrameStackSplitFrameOkayButton)
                 GuildBankFrameStackSplitFrameOkayButton:ClearAllPoints()
                 GuildBankFrameStackSplitFrameOkayButton:SetPoint("TOPRIGHT",
                     GuildBankFrameStackSplitFrame,
@@ -279,7 +280,7 @@ pfUI:RegisterSkin("Guild Bank Turtle", "vanilla", function()
                     -2)
             end
             if (GuildBankFrameStackSplitFrameCancelButton) then
-                SkinButton(GuildBankFrameStackSplitFrameCancelButton)
+                pfUI.api.SkinButton(GuildBankFrameStackSplitFrameCancelButton)
                 GuildBankFrameStackSplitFrameCancelButton:ClearAllPoints()
                 GuildBankFrameStackSplitFrameCancelButton:SetPoint("TOPLEFT",
                     GuildBankFrameStackSplitFrame,
