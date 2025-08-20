@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Include file="..\tests\test_api.lua"/>
+  <Include file="..\tests\test_arena.lua"/>
+</Ui>

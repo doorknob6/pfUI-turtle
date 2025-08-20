@@ -7,3 +7,4 @@
 
 init\modules.xml
 init\skins.xml
+init\tests.xml

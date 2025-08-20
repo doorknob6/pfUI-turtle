@@ -3,14 +3,13 @@ pfUI:RegisterSkin("Arena Turtle", "vanilla", function ()
     pfUI_config["disabled"]["skin_Arena Turtle"]  == "1") then
     return
   end
-  local af = _G["ArenaFrame"]
+  local arenaFrameName = "ArenaFrame"
+  local af = _G[arenaFrameName]
   if not af then return end
 
   local rawborder, border = pfUI.api.GetBorderSize()
 
   pfUI.api.StripTextures(af)
-  local hfTabButton1 = _G["HonorFrameTab1"]
-
 
   -- skin tab buttons
   local afTabButton1 = _G[af:GetName() .. "Tab1"]
@@ -28,4 +27,52 @@ pfUI:RegisterSkin("Arena Turtle", "vanilla", function ()
     afTabButton2:SetPoint("LEFT", afTabButton1, "RIGHT", border*2 + 1, 0)
   end
 
+  -- skin team frames
+  local function skinArenaTeamFrame(no)
+    local teamFrameName = arenaFrameName .. "Team" .. no
+    local teamFrame = _G[teamFrameName]
+    if not teamFrame then return end
+
+    pfUI.api.StripTextures(teamFrame)
+    pfUI.api.CreateBackdrop(teamFrame)
+    pfUI.api.SetHighlight(teamFrame, 1, 1, 1)
+
+    local highlight = _G[teamFrameName .. "Highlight"]
+    if highlight then
+        highlight:SetBackdrop(nil)
+    end
+
+    local detailsFrameName = teamFrameName .. "Details"
+    local detailsFrame = _G[detailsFrameName]
+    if not detailsFrame then return end
+
+    local detailsTeamNameName = detailsFrameName .. "Name"
+    local detailsTeamName = _G[detailsTeamNameName]
+
+    local detailsDisbandButton = _G[detailsFrameName .. "DisbandButton"]
+    if detailsDisbandButton then
+      pfUI.api.SkinButton(detailsDisbandButton, 1, 0.25, 0.25)
+
+      detailsDisbandButton:SetWidth(15)
+      detailsDisbandButton:SetHeight(15)
+
+      detailsDisbandButton.texture = detailsDisbandButton:CreateTexture(
+        "pfUITurtleDisbandArenaTeam"
+      )
+      local texturePath = "Interface\\AddOns\\pfUI-turtle\\img\\cancel"
+      detailsDisbandButton.texture:SetTexture(texturePath)
+      detailsDisbandButton.texture:ClearAllPoints()
+      detailsDisbandButton.texture:SetAllPoints(detailsDisbandButton)
+      detailsDisbandButton.texture:SetVertexColor(1,.25,.25,1)
+      if detailsTeamName then
+        detailsDisbandButton:ClearAllPoints()
+        detailsDisbandButton:SetPoint("RIGHT", detailsTeamName, "LEFT", -5, 0)
+      end
+
+    end
+  end
+
+  skinArenaTeamFrame(1)
+  skinArenaTeamFrame(2)
+  skinArenaTeamFrame(3)
 end)
