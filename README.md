@@ -6,23 +6,34 @@ An extensions for [pfUI](https://github.com/shagu/pfUI) which adds a few skins f
 
 ### Item sell data
 
-The addon contains updated item sell data for Turtle WoW patch **1.17.1 (2023-12-29)**.
+The addon does not contain sell data for Turtle WoW any longer, as this is now part of the main pfUI addon.
 
 ### UI elements
 These UI elements are currently included in this addon:
 
 - Character frame title selection dropdown
+- Character frame Honor and Arena sections
 - Inspect talents frame tab
 - The Looking for Turtles dungeon finder tool
 - The Everlook Broadcasting Co. frame
 - Guild bank frame
     - I haven't had the heart to ask any guilds to give me guild bank editing rights, so some guild bank skins haven't been live-tested. Feedback is very welcome.
+- The transmogrification vendor window.
 
 <p align="center">
 <img src="https://github.com/doorknob6/pfUI-turtle/blob/images/inspect_character_LFT.png?raw=true" width="95%">
 </p>
 
-### Custom skills
+### Custom skills and mechanics
+
+These custom Turtle WoW class skills and mechanics have been implemented in this addon:
+
+- Updated the druid and rogue energy tick formula to the one used in Turtle WoW patch 1.18.0.
+- Inserts the druid Moonkin form autoshift in the autoshift module only when the talent has been chosen.
+
+
+#### Custom skills that have become part of the main Addon
+
 These custom class skills used to be included in this addon, they are included in the main [pfUI](https://github.com/shagu/pfUI) addon now.
 
 - Hunter [Trueshot](https://database.turtle-wow.org/?spell=3035#see-also-ability) now has a castbar
