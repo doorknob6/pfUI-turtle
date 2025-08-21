@@ -7,4 +7,5 @@
   <Include file="..\skins\turtle\inspect.lua"/>
   <Include file="..\skins\turtle\lft.lua"/>
   <Include file="..\skins\turtle\static_popup.lua"/>
+  <Include file="..\skins\turtle\transmog.lua"/>
 </Ui>

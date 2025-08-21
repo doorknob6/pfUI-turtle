@@ -121,13 +121,6 @@ pfUI:RegisterSkin("Arena Turtle", "vanilla", function ()
         kickButton.texture:ClearAllPoints()
         kickButton.texture:SetAllPoints(kickButton)
         kickButton.texture:SetVertexColor(1,.25,.25,1)
-
-        -- local memberName = _G[memberFrameName .. "Name"]
-        -- if memberName then
-        --   kickButton:ClearAllPoints()
-        --   kickButton:SetPoint("LEFT", memberName, "LEFT", 142, 0)
-        -- end
-
       end
     end
 
