@@ -30,6 +30,7 @@ These custom Turtle WoW class skills and mechanics have been implemented in this
 
 - Updated the druid and rogue energy tick formula to the one used in Turtle WoW patch 1.18.0.
 - Inserts the druid Moonkin form autoshift in the autoshift module only when the talent has been chosen.
+- Buff indicators on unitframes for priest Champion spells have been added.
 
 
 #### Custom skills that have become part of the main Addon

@@ -13,9 +13,9 @@ pfUI:RegisterModule("Turtle WoW druid moonkin autoshift", "vanilla", function ()
   moonkinScan:RegisterEvent("CHARACTER_POINTS_CHANGED")
   moonkinScan:SetScript("OnEvent", function()
     for i = table.getn(pfUI.autoshift.shapeshifts), 1, -1 do
-    if pfUI.autoshift.shapeshifts[i] == "spell_nature_forceofnature" then
-      table.remove(pfUI.autoshift.shapeshifts, i)
-    end
+      if pfUI.autoshift.shapeshifts[i] == "spell_nature_forceofnature" then
+        table.remove(pfUI.autoshift.shapeshifts, i)
+      end
     end
     local _,_,_,_,moonkin = GetTalentInfo(1,15)
     if moonkin == 1 then

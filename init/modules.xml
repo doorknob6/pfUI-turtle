@@ -1,4 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
   <Include file="..\modules\autoshift.lua"/>
   <Include file="..\modules\energytick.lua"/>
+  <Include file="..\modules\championindicators.lua"/>
 </Ui>
