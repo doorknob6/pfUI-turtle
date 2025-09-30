@@ -1,5 +1,9 @@
 pfUI:RegisterModule("turtle-energytick", "vanilla:tbc", function ()
   if not pfUI.uf or not pfUI.uf.player then return end
+  if C.unitframes and C.unitframes.player and C.unitframes.player.energy == "1" then
+    return
+  end
+  if not pfUI.uf or not pfUI.uf.player then return end
   local energytick = CreateFrame("Frame", nil, pfUI.uf.player.power.bar)
   energytick:SetAllPoints(pfUI.uf.player.power.bar)
   energytick:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -112,4 +116,5 @@ pfUI:RegisterModule("turtle-energytick", "vanilla:tbc", function ()
     -- run default unitframe update function
     hookUpdateConfig(pfUI.uf.player)
   end
+
 end)
