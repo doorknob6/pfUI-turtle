@@ -14,8 +14,13 @@ pfUI:RegisterModule("turtle-energytick", "vanilla:tbc", function ()
     local baseTickRate = 2.0 -- Base 2 seconds
 
     -- Check for Blade Rush talent (tab 2, talent 16)
-    local _, _, _, _, currRank = GetTalentInfo(2, 16)
+    local name, _, _, _, currRank = GetTalentInfo(2, 16)
     local bladeRushRank = currRank or 0
+    
+    if not name or name ~= "Blade Rush" then
+      return baseTickRate
+    end
+    
 
     if bladeRushRank > 0 then
       local agility = UnitStat("player", 2) -- 2 is agility stat index
